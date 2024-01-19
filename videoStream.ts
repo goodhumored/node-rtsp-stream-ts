@@ -8,7 +8,7 @@ const STREAM_MAGIC_BYTES = "jsmp" // Must be 4 bytes
 export default class VideoStream extends EventEmitter {
 
   private mpeg1Muxer: Mpeg1Muxer;
-  private ffmpegOptions: {}
+  private ffmpegOptions: Record<string, unknown>
   private ffmpegPath: string;
   private width: number
   private height: number
@@ -20,21 +20,21 @@ export default class VideoStream extends EventEmitter {
   private wsServer: Server;
 
   constructor(options: {
-    name: string,
+    name?: string,
     streamUrl: string,
     wsPort: number,
-    ffmpegOptions: Record<string, unknown>,
+    ffmpegOptions?: Record<string, unknown>,
     ffmpegPath?: string,
-    width: number,
-    height: number,
+    width?: number,
+    height?: number,
   }) {
     super();
     this.ffmpegOptions = options.ffmpegOptions;
     this.ffmpegPath = options.ffmpegPath;
-    this.name = options.name
+    this.name = options.name ?? "name";
     this.streamUrl = options.streamUrl
-    this.width = options.width
-    this.height = options.height
+    this.width = options.width ?? 1024
+    this.height = options.height ?? 1024
     this.wsPort = options.wsPort
     this.startMpeg1Stream()
     this.pipeStreamToSocketServer()
