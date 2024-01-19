@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepublish": "npm run test",
+    "build": "tsc",
     "test": "mocha test/*.js"
   },
   "repository": {
@@ -14,7 +15,8 @@
   "author": "David Jsa <david@jsa.me>",
   "license": "MIT",
   "devDependencies": {
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "ws": "^7.0.0"
