@@ -1,3 +1,4 @@
 import VideoStream from "./videoStream";
+import Mpeg1Muxer from "./mpeg1muxer"
 
-export default VideoStream;
+export {VideoStream, Mpeg1Muxer};
